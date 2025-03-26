@@ -1,5 +1,6 @@
 import socket
 import logging
+import Main
 
 # Configuración del logging para registrar la actividad
 logging.basicConfig(filename='servidor.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -38,3 +39,9 @@ def iniciar_servidor():
 
 if __name__ == '__main__':
     iniciar_servidor()
+    ClaseMain = Main()
+    ClaseMain.main()
+    ClaseJuego2 = Juego()
+    ClaseJuego2.iniciar_juego()
+    ClaseJuego2.play_music()
+    ClaseJuego2.Game_Loop(print(ClaseJuego2.RoomBa_position))
