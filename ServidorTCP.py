@@ -1,6 +1,7 @@
 import socket
 import logging
 import Main
+import Juego
 
 # Configuración del logging para registrar la actividad
 logging.basicConfig(filename='servidor.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
