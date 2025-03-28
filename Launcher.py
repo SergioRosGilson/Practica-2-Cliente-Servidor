@@ -1,5 +1,4 @@
 import concurrent.futures
-from Juego import Juego
 from Zonas import Zonas
 import Launcher
 
@@ -9,10 +8,10 @@ class Launcher:
         """Calcula el área de una zona multiplicando largo por ancho."""
         return largo * ancho
     
-    def main():
+    def launcher():
         
         ClaseZonas = Zonas()
-        ClaseMain = Launcher()
+        ClaseLauncher = Launcher()
         
         # Tasa de limpieza (por ejemplo, 1000 cm²/segundo)
         tasa_limpeza = 1000  # cm²/s
@@ -24,7 +23,7 @@ class Launcher:
         with concurrent.futures.ThreadPoolExecutor() as executor:
             # Asignamos cada cálculo a un hilo
             future_to_zona = {
-                executor.submit(ClaseMain.calcular_area, largo, ancho): zona
+                executor.submit(ClaseLauncher.calcular_area, largo, ancho): zona
                 for zona, (largo, ancho) in ClaseZonas.zonas.items()
             }
             
@@ -46,11 +45,3 @@ class Launcher:
         
         print(f"\nSuperficie total a limpiar: {superficie_total} cm²")
         print(f"Tiempo estimado de limpieza: {tiempo_limpeza:.2f} segundos")
-
-    if __name__ == '__main__':
-        ClaseMain = Launcher()
-        ClaseMain.main()
-        ClaseJuego2 = Juego()
-        ClaseJuego2.iniciar_juego()
-        ClaseJuego2.play_music()
-        ClaseJuego2.Game_Loop(print(ClaseJuego2.RoomBa_position))
