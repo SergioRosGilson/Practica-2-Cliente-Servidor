@@ -1,7 +1,10 @@
 from Launcher import Launcher
 from Juego import Juego
+from ServidorTCP import ServidorTCP
 
 if __name__ == '__main__':
+        ClaseServidor = ServidorTCP()
+        ClaseServidor.iniciar_servidor()
         ClaseLauncher = Launcher()
         ClaseLauncher.launcher()
         ClaseJuego2 = Juego()
