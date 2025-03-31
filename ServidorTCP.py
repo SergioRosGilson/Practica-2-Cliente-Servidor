@@ -21,7 +21,7 @@ class ServidorTCP:
         print(f"Servidor escuchando en {self.host}:{self.puerto}...")
     
         while True:
-            conexion, direccion = server_socket.accept()
+            conexion, direccion = self.server_socket.accept()
             print(f"Conexión establecida con {direccion}")
             try:
                 datos = conexion.recv(1024)
