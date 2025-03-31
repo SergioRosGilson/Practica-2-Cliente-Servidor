@@ -8,14 +8,17 @@ class ServidorTCP:
     # Configuración del logging para registrar la actividad
     logging.basicConfig(filename='servidor.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-    def iniciar_servidor():
+    def _init_(self, host = "127.0.0.1", puerto = 8809):
+        self.host = host
+        self.puerto = puerto
+        self.server_socket = None
+    
+    def iniciar_servidor(self):
         # Configurar el socket del servidor
-        host = '127.0.0.1'
-        puerto = 8809
-        server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        server_socket.bind((host, puerto))
-        server_socket.listen(5)
-        print(f"Servidor escuchando en {host}:{puerto}...")
+        self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server_socket.bind((self.host, self.puerto))
+        self.server_socket.listen(5)
+        print(f"Servidor escuchando en {self.host}:{self.puerto}...")
     
         while True:
             conexion, direccion = server_socket.accept()
