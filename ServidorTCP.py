@@ -6,9 +6,9 @@ class ServidorTCP:
     # Configuración del logging para registrar la actividad
     logging.basicConfig(filename='servidor.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-    def _init_(self, host = "127.0.0.1", puerto = 8809):
-        self.host = host
-        self.puerto = puerto
+    def _init_(self):
+        self.host = "127.0.0.1"
+        self.puerto = 8809
         self.server_socket = None
 
     def PasswordVerification(n):
