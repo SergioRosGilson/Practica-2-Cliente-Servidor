@@ -10,6 +10,7 @@ class ServidorTCP:
         self.host = "127.0.0.1"
         self.puerto = 8809
         self.server_socket = None
+        self.acceso = False
 
     def PasswordVerification(n):
         if n == 2:
@@ -45,8 +46,10 @@ class ServidorTCP:
                 # Verificar la password
                 if self.PasswordVerification(password):
                     respuesta = f"La password {password} es correcta."
+                    self.acceso = True
                 else:
                     respuesta = f"La password {password} no es correcta."
+                    self.acceso = False
 
                 # Enviar la respuesta al cliente
                 conexion.send(respuesta.encode())
@@ -55,4 +58,5 @@ class ServidorTCP:
             except Exception as e:
                 logging.error(f"Error en la conexión: {e}")
             finally:
+                self.acceso = False
                 conexion.close()

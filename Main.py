@@ -9,7 +9,7 @@ if __name__ == '__main__':
         ClaseCliente = ClienteTCP()
         ClaseCliente.iniciar_cliente()
 
-        if ClaseCliente.acceso:
+        if ClaseServidor.acceso:
 
                 ClaseLauncher = Launcher()
                 ClaseLauncher.launcher()

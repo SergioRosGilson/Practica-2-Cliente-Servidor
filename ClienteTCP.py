@@ -6,7 +6,6 @@ class ClienteTCP:
         self.host = "127.0.0.1"
         self.puerto = 8809
         self.client_socket = None
-        self.acceso = False
     
     def iniciar_cliente(self):
         # Crear el socket del cliente
@@ -20,9 +19,7 @@ class ClienteTCP:
             # Recibir la respuesta del servidor
             respuesta = self.client_socket.recv(1024).decode()
             print("Respuesta del servidor:", respuesta)
-            self.acceso = True
         except Exception as e:
             print(f"Error en la conexión: {e}")
         finally:
             self.client_socket.close()
-            self.acceso = False
