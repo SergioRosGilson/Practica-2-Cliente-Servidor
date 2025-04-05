@@ -1,7 +1,5 @@
 import socket
 import logging
-import Main
-import Juego
 
 class ServidorTCP:
 
