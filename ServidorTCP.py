@@ -12,6 +12,12 @@ class ServidorTCP:
         self.host = host
         self.puerto = puerto
         self.server_socket = None
+
+    def PasswordVerification(n):
+        if n == 2:
+            return True
+        else:
+            return False
     
     def iniciar_servidor(self):
         # Configurar el socket del servidor
@@ -30,13 +36,23 @@ class ServidorTCP:
     
                 # Intentar convertir los datos recibidos a entero
                 try:
-                    numero = int(datos.decode().strip())
+                    password = int(datos.decode().strip())
                 except ValueError:
                     respuesta = "Error: Entrada no es un número entero."
                     conexion.send(respuesta.encode())
                     logging.error(f"Datos inválidos recibidos: {datos.decode().strip()}")
                     conexion.close()
                     continue
+
+                # Verificar la password
+                if self.PasswordVerification(password):
+                    respuesta = f"La password {password} es correcta."
+                else:
+                    respuesta = f"La password {password} no es correcta."
+
+                # Enviar la respuesta al cliente
+                conexion.send(respuesta.encode())
+                logging.info(f"Recibido: {password} - Respuesta: {respuesta}")
     
             except Exception as e:
                 logging.error(f"Error en la conexión: {e}")

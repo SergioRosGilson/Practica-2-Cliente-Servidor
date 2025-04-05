@@ -1,6 +1,5 @@
 import concurrent.futures
 from Zonas import Zonas
-import Launcher
 
 class Launcher:
 
@@ -8,10 +7,9 @@ class Launcher:
         """Calcula el área de una zona multiplicando largo por ancho."""
         return largo * ancho
     
-    def launcher():
+    def launcher(self):
         
         ClaseZonas = Zonas()
-        ClaseLauncher = Launcher()
         
         # Tasa de limpieza (por ejemplo, 1000 cm²/segundo)
         tasa_limpeza = 1000  # cm²/s
@@ -23,7 +21,7 @@ class Launcher:
         with concurrent.futures.ThreadPoolExecutor() as executor:
             # Asignamos cada cálculo a un hilo
             future_to_zona = {
-                executor.submit(ClaseLauncher.calcular_area, largo, ancho): zona
+                executor.submit(self.calcular_area, largo, ancho): zona
                 for zona, (largo, ancho) in ClaseZonas.zonas.items()
             }
             
