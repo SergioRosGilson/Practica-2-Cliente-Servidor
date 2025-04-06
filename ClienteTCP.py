@@ -2,7 +2,7 @@ import socket
  
 class ClienteTCP:
 
-    def _init_(self):
+    def __init__(self):
         self.host = "127.0.0.1"
         self.puerto = 8809
         self.client_socket = None
